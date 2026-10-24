@@ -12,7 +12,9 @@ dependencies = []
 
 [project.optional-dependencies]
 kaggle = ["kaggle"]
-optimize = ["numpy", "scipy", "mpmath"]
+optimize = ["numpy", "scipy"]
+plot = ["Pillow"]
+official = ["mpmath>=1.3", "pandas"]
 
 [project.scripts]
 squares = "squares.cli:main"

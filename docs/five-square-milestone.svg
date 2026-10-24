@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="550" viewBox="0 0 1260 550">
+<rect width="100%" height="100%" fill="#f6f8fc"/>
+<text x="30" y="42" font-family="sans-serif" font-size="25" font-weight="bold" fill="#17263c">Five-square milestone: the solver finds the rotated packing</text>
+<text x="30" y="68" font-family="sans-serif" font-size="13" fill="#536279">Unit squares | red indicates a detected overlap</text>
+<text x="35" y="108" font-family="sans-serif" font-size="17" font-weight="bold" fill="#17263c">Grid baseline | n=5</text>
+<text x="35" y="129" font-family="sans-serif" font-size="13" fill="#536279">L = 3.000000000 | local check passed</text>
+<rect x="35" y="148" width="350" height="350" fill="white" stroke="#17263c" stroke-width="2"/>
+<polygon points="35.00000,498.00000 151.66667,498.00000 151.66667,381.33333 35.00000,381.33333" fill="#5b8ff9" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="93.33333" y="444.66667" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">0</text>
+<polygon points="151.66667,498.00000 268.33333,498.00000 268.33333,381.33333 151.66667,381.33333" fill="#61c4a4" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="210.00000" y="444.66667" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">1</text>
+<polygon points="268.33333,498.00000 385.00000,498.00000 385.00000,381.33333 268.33333,381.33333" fill="#f2bd56" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="326.66667" y="444.66667" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">2</text>
+<polygon points="35.00000,381.33333 151.66667,381.33333 151.66667,264.66667 35.00000,264.66667" fill="#a187db" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="93.33333" y="328.00000" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">3</text>
+<polygon points="151.66667,381.33333 268.33333,381.33333 268.33333,264.66667 151.66667,264.66667" fill="#f18e79" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="210.00000" y="328.00000" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">4</text>
+<text x="455" y="108" font-family="sans-serif" font-size="17" font-weight="bold" fill="#17263c">Known construction | n=5</text>
+<text x="455" y="129" font-family="sans-serif" font-size="13" fill="#536279">L = 2.707106798 | local check passed</text>
+<rect x="455" y="148" width="350" height="350" fill="white" stroke="#17263c" stroke-width="2"/>
+<polygon points="455.00000,498.00000 584.28932,498.00000 584.28932,368.71068 455.00000,368.71068" fill="#5b8ff9" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="519.64466" y="438.35534" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">0</text>
+<polygon points="675.71068,498.00000 805.00000,498.00000 805.00000,368.71068 675.71068,368.71068" fill="#61c4a4" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="740.35534" y="438.35534" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">1</text>
+<polygon points="675.71068,277.28932 805.00000,277.28932 805.00000,148.00000 675.71068,148.00000" fill="#f2bd56" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="740.35534" y="217.64466" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">2</text>
+<polygon points="455.00000,277.28932 584.28932,277.28932 584.28932,148.00000 455.00000,148.00000" fill="#a187db" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="519.64466" y="217.64466" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">3</text>
+<polygon points="630.00000,414.42136 721.42136,323.00000 630.00000,231.57864 538.57864,323.00000" fill="#f18e79" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="630.00000" y="328.00000" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">4</text>
+<text x="875" y="108" font-family="sans-serif" font-size="17" font-weight="bold" fill="#17263c">Found by search | n=5</text>
+<text x="875" y="129" font-family="sans-serif" font-size="13" fill="#536279">L = 2.707107101 | local check passed</text>
+<rect x="875" y="148" width="350" height="350" fill="white" stroke="#17263c" stroke-width="2"/>
+<polygon points="875.00000,277.28931 1004.28931,277.28931 1004.28931,148.00000 875.00000,148.00000" fill="#5b8ff9" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="939.64465" y="217.64465" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">0</text>
+<polygon points="1095.71069,498.00000 1225.00000,498.00000 1225.00000,368.71069 1095.71069,368.71069" fill="#61c4a4" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="1160.35535" y="438.35535" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">1</text>
+<polygon points="1004.28931,498.00000 1004.28931,368.71069 875.00000,368.71069 875.00000,498.00000" fill="#f2bd56" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="939.64465" y="438.35535" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">2</text>
+<polygon points="1049.99998,414.42135 1141.42135,323.00002 1050.00002,231.57865 958.57865,322.99998" fill="#a187db" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="1050.00000" y="328.00000" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">3</text>
+<polygon points="1225.00000,277.28931 1225.00000,148.00000 1095.71069,148.00000 1095.71069,277.28931" fill="#f18e79" fill-opacity=".75" stroke="#294461" stroke-width="1.5"/>
+<text x="1160.35535" y="217.64465" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#17263c">4</text>
+</svg>

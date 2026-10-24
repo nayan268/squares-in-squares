@@ -1,0 +1,210 @@
+{
+  "benchmark": {
+    "cases": [
+      {
+        "n": 5,
+        "grid_L": 3.0,
+        "best_L": 2.707107100771611,
+        "improved_runs": 3,
+        "runs": 3,
+        "median_seconds": 23.5282702,
+        "target_hits": 2
+      },
+      {
+        "n": 10,
+        "grid_L": 4.0,
+        "best_L": 3.707107304955875,
+        "improved_runs": 2,
+        "runs": 3,
+        "median_seconds": 59.47950639999999,
+        "target_hits": null
+      },
+      {
+        "n": 11,
+        "grid_L": 4.0,
+        "best_L": 4.0,
+        "improved_runs": 0,
+        "runs": 3,
+        "median_seconds": 95.96900930000004,
+        "target_hits": null
+      }
+    ],
+    "total_seconds": 539.3545637000001,
+    "competition_score_estimate": 28.714063427353796,
+    "grid_score_estimate": 28.937669916550586,
+    "reference_used_as_start": false,
+    "official": {
+      "provenance": {
+        "source_sha256": "5c42955b6347e721dccaf72abec83f9e88fd488e3b9c40c1d23f476dc7189d94",
+        "source_file": "runs\\official-metric\\squares-in-squares-v17.ipynb",
+        "adapter": "original verify_puzzle, measure_side_mp and score_puzzle; postponed annotations"
+      },
+      "puzzles": [
+        {
+          "n": 5,
+          "feasible": true,
+          "reason": "feasible",
+          "L": "2.707107100771611016845283659432580022072971920281496361",
+          "score": 0.21065509993953913
+        },
+        {
+          "n": 10,
+          "feasible": true,
+          "reason": "feasible",
+          "L": "3.707107304955875196339214766844206179920310537126924247",
+          "score": 0.1722902614308972
+        },
+        {
+          "n": 11,
+          "feasible": true,
+          "reason": "feasible",
+          "L": "4.0",
+          "score": 0.20604537831105452
+        }
+      ],
+      "all_feasible": true,
+      "competition_score": 28.714063427353782
+    }
+  },
+  "seeds": [
+    {
+      "n": 5,
+      "seed": 0,
+      "L": 2.7071071648510756,
+      "seconds": 23.5282702,
+      "improved": true,
+      "official_feasible": true
+    },
+    {
+      "n": 5,
+      "seed": 1,
+      "L": 2.849619729943948,
+      "seconds": 26.305305099999998,
+      "improved": true,
+      "official_feasible": true
+    },
+    {
+      "n": 5,
+      "seed": 2,
+      "L": 2.707107100771611,
+      "seconds": 11.9823241,
+      "improved": true,
+      "official_feasible": true
+    },
+    {
+      "n": 10,
+      "seed": 0,
+      "L": 3.728581844557302,
+      "seconds": 59.47950639999999,
+      "improved": true,
+      "official_feasible": true
+    },
+    {
+      "n": 10,
+      "seed": 1,
+      "L": 4.0,
+      "seconds": 80.81323459999999,
+      "improved": false,
+      "official_feasible": true
+    },
+    {
+      "n": 10,
+      "seed": 2,
+      "L": 3.707107304955875,
+      "seconds": 39.91604939999999,
+      "improved": true,
+      "official_feasible": true
+    },
+    {
+      "n": 11,
+      "seed": 0,
+      "L": 4.0,
+      "seconds": 110.34629860000001,
+      "improved": false,
+      "official_feasible": true
+    },
+    {
+      "n": 11,
+      "seed": 1,
+      "L": 4.0,
+      "seconds": 95.96900930000004,
+      "improved": false,
+      "official_feasible": true
+    },
+    {
+      "n": 11,
+      "seed": 2,
+      "L": 4.0,
+      "seconds": 91.01456600000006,
+      "improved": false,
+      "official_feasible": true
+    }
+  ],
+  "environment": {
+    "versions": {
+      "python": "3.9.0",
+      "numpy": "1.26.0",
+      "scipy": "1.11.3"
+    },
+    "source_hashes": {
+      "optimize.py": "dd61bb3d785d46a54e11e6125831b82d0cfade8599bd3eca6afca2765733cfba",
+      "geometry.py": "5153f59e620ef68d2a251beba96de036175662090cf0656aa273f21b7c3f3818",
+      "experiment.py": "eb3447769c34f157c207c7494b6a63ebc15108556db5e362838103e0a5f0528a"
+    },
+    "cases": [
+      5,
+      10,
+      11
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "reference_used_as_start": false
+  },
+  "final_incumbent": {
+    "score": 28.714063292065426,
+    "rows": 500500,
+    "puzzles": 1000,
+    "replacements": {
+      "provenance": {
+        "source_sha256": "5c42955b6347e721dccaf72abec83f9e88fd488e3b9c40c1d23f476dc7189d94",
+        "source_file": "runs\\official-metric\\squares-in-squares-v17.ipynb",
+        "adapter": "original verify_puzzle, measure_side_mp and score_puzzle; postponed annotations"
+      },
+      "puzzles": [
+        {
+          "n": 5,
+          "feasible": true,
+          "reason": "feasible",
+          "L": "2.707106798257615",
+          "score": 0.2106549646511673
+        },
+        {
+          "n": 10,
+          "feasible": true,
+          "reason": "feasible",
+          "L": "3.707107304955875196339214766844206179920310537126924247",
+          "score": 0.1722902614308972
+        },
+        {
+          "n": 11,
+          "feasible": true,
+          "reason": "feasible",
+          "L": "4.0",
+          "score": 0.20604537831105452
+        }
+      ],
+      "all_feasible": true,
+      "competition_score": 28.714063292065408
+    }
+  },
+  "checks": [
+    "14 unit tests pass",
+    "n=4 area-bound control passes official check",
+    "overlapping n=2 negative control is rejected with CLI exit code 2",
+    "all 9 benchmark exports pass official feasibility",
+    "full 500500-row export passes local readback and validation"
+  ]
+}

@@ -14,4 +14,5 @@ dependencies: python -m pip install -e '.[optimize]'.
 
 Record solver revision, parameters, random seed, n range, runtime, side lengths,
 local and official scores, and rejected overlaps under runs/<unique-run-name>/.
-The baseline has no random component. No competitive optimizer is implemented.
+The baseline has no random component. A first small-n solver and benchmark
+runner are now implemented; see [optimization.md](optimization.md).

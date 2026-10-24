@@ -32,5 +32,6 @@ nearly touching rotated squares or very large coordinates. It does not preserve
 arbitrary decimal precision. The baseline uses exact half-integers and angle 0.
 
 The official metric and rules remain authoritative. Verify updates before
-submitting. This repo includes no downloaded competition data, official metric
-source, or accepted competition terms.
+submitting. This repo includes no competition data or accepted competition terms. The
+first optimization run retains an untracked local official metric notebook;
+see [optimization.md](optimization.md) for its provenance and adapter.

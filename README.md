@@ -5,8 +5,9 @@ pack n unit squares into the smallest axis-aligned square for n=1..1000.
 
 Includes a deterministic grid baseline, rotated-square geometry, spatially
 bucketed overlap checks, official-format CSV I/O, score estimates, tests, and
-GitHub Actions. Core tools need only the standard library. The baseline is a
-starting point; no competitive optimizer is implemented yet.
+GitHub Actions. Core tools need only the standard library. A small-n multistart solver,
+reference construction, plotter, and reproducible benchmark workflow are included.
+See [the optimization guide](docs/optimization.md).
 
 ## Quick start (PowerShell)
 
@@ -100,3 +101,12 @@ No remote is configured. Create a private repository in your preferred Git host:
 git remote add origin <your-private-repository-url>
 git push -u origin codex/project-setup
 ~~~
+
+## First optimization run
+
+See [docs/optimization.md](docs/optimization.md) for the solver, plot commands,
+benchmark settings, and official metric adapter. The first local results are
+under runs/benchmark-001/; generated files remain ignored by Git.
+
+[First benchmark results](docs/first-results.md) include measured outcomes,
+per-seed success rates, and the next experiment.
