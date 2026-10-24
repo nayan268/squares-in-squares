@@ -56,9 +56,24 @@ def main(argv=None):
     comparison.add_argument("--output",type=Path,required=True)
     comparison.add_argument("--metric",type=Path)
     comparison.add_argument("--resume",action="store_true")
+    local=commands.add_parser("local-run",help="resumable local run over all 1000 puzzles")
+    local.add_argument("--output",type=Path,required=True)
+    local.add_argument("--preset",choices=["quick","overnight"],default="quick")
+    local.add_argument("--workers",type=int,default=2)
+    local.add_argument("--resume",action="store_true")
+    local.add_argument("--max-n",type=int,default=1000)
+    local.add_argument("--small-seconds",type=float)
+    local.add_argument("--large-seconds",type=float)
+    local.add_argument("--seed",type=int,default=1000)
+    local.add_argument("--saved",default="submissions/improved-puzzles-002.csv")
+    local.add_argument("--metric",default="runs/official-metric/squares-in-squares-v17.ipynb")
     args=parser.parse_args(argv)
     try:
-        if args.command=="baseline":
+        if args.command=="local-run":
+            from .local_run import run_all
+            run_all(args.output,args.preset,args.workers,args.resume,args.max_n,
+                    args.saved,args.metric,args.small_seconds,args.large_seconds,args.seed)
+        elif args.command=="baseline":
             if not 1<=args.max_n<=1000:
                 raise ValueError("max-n must be from 1 through 1000")
             packings={n:grid(n) for n in range(1,args.max_n+1)}

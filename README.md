@@ -124,3 +124,8 @@ python -m squares basin --n 11 --seed 20 --seconds 60 --output submissions/basin
 
 [Eleven-square basin-hopping results](docs/basin-results.md) record the
 matched-budget comparison and updated incumbent.
+
+## Full local pass
+
+See [the all-puzzle local-run guide](docs/local-all-run.md) for the standalone
+CPU job, progress logs, checkpoints, stop/resume commands, and validation scope.
