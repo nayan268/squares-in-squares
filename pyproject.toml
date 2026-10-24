@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "squares-in-squares"
+version = "0.1.0"
+description = "Baselines and geometry for Kaggle Squares in Squares"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+kaggle = ["kaggle"]
+optimize = ["numpy", "scipy", "mpmath"]
+
+[project.scripts]
+squares = "squares.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
