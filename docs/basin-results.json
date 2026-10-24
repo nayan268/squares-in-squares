@@ -1,0 +1,160 @@
+{
+  "benchmark": {
+    "n": 11,
+    "seconds_per_run": 60.0,
+    "seeds": [
+      20,
+      21,
+      22
+    ],
+    "summary": [
+      {
+        "algorithm": "legacy",
+        "best_L": 3.897605733153978,
+        "median_L": 4.0,
+        "improved_runs": 1,
+        "runs": 3,
+        "median_seconds": 60.003588300000004
+      },
+      {
+        "algorithm": "basin",
+        "best_L": 3.8856186271004804,
+        "median_L": 3.886746573128303,
+        "improved_runs": 3,
+        "runs": 3,
+        "median_seconds": 60.0010958
+      }
+    ],
+    "runs": [
+      {
+        "algorithm": "legacy",
+        "seed": 20,
+        "L": 3.897605733153978,
+        "seconds": 60.0029267,
+        "improved": true,
+        "official_feasible": true,
+        "completed_hops": null,
+        "accepted_uphill": null
+      },
+      {
+        "algorithm": "basin",
+        "seed": 20,
+        "L": 3.886746573128303,
+        "seconds": 60.0014687,
+        "improved": true,
+        "official_feasible": true,
+        "completed_hops": 68,
+        "accepted_uphill": 15
+      },
+      {
+        "algorithm": "basin",
+        "seed": 21,
+        "L": 3.9142141127091357,
+        "seconds": 60.0010958,
+        "improved": true,
+        "official_feasible": true,
+        "completed_hops": 71,
+        "accepted_uphill": 18
+      },
+      {
+        "algorithm": "legacy",
+        "seed": 21,
+        "L": 4.0,
+        "seconds": 60.003588300000004,
+        "improved": false,
+        "official_feasible": true,
+        "completed_hops": null,
+        "accepted_uphill": null
+      },
+      {
+        "algorithm": "legacy",
+        "seed": 22,
+        "L": 4.0,
+        "seconds": 60.0081426,
+        "improved": false,
+        "official_feasible": true,
+        "completed_hops": null,
+        "accepted_uphill": null
+      },
+      {
+        "algorithm": "basin",
+        "seed": 22,
+        "L": 3.8856186271004804,
+        "seconds": 60.0006429,
+        "improved": true,
+        "official_feasible": true,
+        "completed_hops": 106,
+        "accepted_uphill": 20
+      }
+    ]
+  },
+  "environment": {
+    "python": "3.9.0",
+    "numpy": "1.26.0",
+    "scipy": "1.11.3",
+    "source_hashes": {
+      "basin.py": "1fdbcae818dc262de2a7428b77908c8fd1e96f3ff818982da4bd14580bc128ec",
+      "basin_experiment.py": "dad97d667cd53febfed7c556518b52293c765f2277efe212f946d932ef17cdad",
+      "optimize.py": "ce1ed6f785e46ba0319fafb6aad638c89ce5cf451fe308a174b3d4217752e774",
+      "geometry.py": "5153f59e620ef68d2a251beba96de036175662090cf0656aa273f21b7c3f3818",
+      "baseline.py": "e234937a2b6932d5d8de84c1f3741f3d1993e202a54ab508b49b8f3a5a41e8d9",
+      "submission.py": "f556128428d2aef8c35fd335d14c57ca4ab1e7755667c1f3e85d6583835eb878",
+      "official.py": "47bec0b7663fefc8a6fb67c265414d82ab49cde55edbe74c23e231d3baec96a0",
+      "plot.py": "c5f4f434265cafbf0046d889b9c1b0a04143584d7a38d625f57fb039b578b0f0"
+    },
+    "n": 11,
+    "seeds": [
+      20,
+      21,
+      22
+    ],
+    "seconds_per_run": 60.0,
+    "pilot_seeds": [
+      0,
+      1
+    ],
+    "reference_used_as_start": false,
+    "comparison_scope": "new hopping plus analytic derivatives versus original finite-difference multistart"
+  },
+  "resume_provenance": {
+    "runner_sha256": "1cd7a2dbc23a4495214a77ca91eaf5ac832b3fbbe52cea2da71f21dc1d107538",
+    "algorithm_hashes_verified": true
+  },
+  "selected_packing": "runs\\basin-benchmark-001\\best-basin.csv",
+  "selected_L": 3.8856186271004804,
+  "full_submission_rows": 500500,
+  "full_submission_puzzles": 1000,
+  "full_score_estimate": 28.67957601052784,
+  "replacement_official_checks": {
+    "provenance": {
+      "source_sha256": "5c42955b6347e721dccaf72abec83f9e88fd488e3b9c40c1d23f476dc7189d94",
+      "source_file": "runs\\official-metric\\squares-in-squares-v17.ipynb",
+      "adapter": "original verify_puzzle, measure_side_mp and score_puzzle; postponed annotations"
+    },
+    "puzzles": [
+      {
+        "n": 5,
+        "feasible": true,
+        "reason": "feasible",
+        "L": "2.707106798257615",
+        "score": 0.2106549646511673
+      },
+      {
+        "n": 10,
+        "feasible": true,
+        "reason": "feasible",
+        "L": "3.707107304955875196339214766844206179920310537126924247",
+        "score": 0.1722902614308972
+      },
+      {
+        "n": 11,
+        "feasible": true,
+        "reason": "feasible",
+        "L": "3.885618627100480612004149167610897812482361989031348102",
+        "score": 0.17155809677346978
+      }
+    ],
+    "all_feasible": true,
+    "competition_score": 28.679576010527825
+  }
+}

@@ -110,3 +110,17 @@ under runs/benchmark-001/; generated files remain ignored by Git.
 
 [First benchmark results](docs/first-results.md) include measured outcomes,
 per-seed success rates, and the next experiment.
+
+## Basin hopping for eleven squares
+
+The new solver supports collective moves, penalized exploration states,
+analytic local derivatives, and a wall-clock budget.
+See [the basin-hopping guide](docs/basin-hopping.md) for commands and evaluation.
+
+~~~powershell
+$env:PYTHONPATH = "$PWD/src"
+python -m squares basin --n 11 --seed 20 --seconds 60 --output submissions/basin-new.csv --report runs/basin-new.json
+~~~
+
+[Eleven-square basin-hopping results](docs/basin-results.md) record the
+matched-budget comparison and updated incumbent.

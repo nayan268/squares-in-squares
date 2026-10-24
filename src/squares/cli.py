@@ -40,6 +40,22 @@ def main(argv=None):
             p.add_argument("--cases",type=int,nargs="+",default=[5,10,11])
             p.add_argument("--seeds",type=int,nargs="+",default=[0,1,2])
             p.add_argument("--metric",type=Path)
+    basin=commands.add_parser("basin",help="run basin hopping with analytic local refinement")
+    basin.add_argument("--n",type=int,default=11)
+    basin.add_argument("--seed",type=int,default=0)
+    basin.add_argument("--seconds",type=float,default=60)
+    basin.add_argument("--hops",type=int,default=1000)
+    basin.add_argument("--maxiter",type=int,default=140)
+    basin.add_argument("--temperature",type=float,default=0.04)
+    basin.add_argument("--output",type=Path,required=True)
+    basin.add_argument("--report",type=Path)
+    comparison=commands.add_parser("basin-benchmark",help="equal-time comparison with the original solver")
+    comparison.add_argument("--n",type=int,default=11)
+    comparison.add_argument("--seeds",type=int,nargs="+",default=[20,21,22])
+    comparison.add_argument("--seconds",type=float,default=60)
+    comparison.add_argument("--output",type=Path,required=True)
+    comparison.add_argument("--metric",type=Path)
+    comparison.add_argument("--resume",action="store_true")
     args=parser.parse_args(argv)
     try:
         if args.command=="baseline":
@@ -60,6 +76,20 @@ def main(argv=None):
                 raise ValueError("requested n is missing from submission")
             plot_packings([("Packing",packings[args.n])],args.output)
             print("Wrote plot:",args.output)
+        elif args.command=="basin":
+            from .basin import solve_basin,BasinConfig
+            if args.output.exists() or (args.report and args.report.exists()):
+                raise FileExistsError("choose fresh output and report paths")
+            packing,result=solve_basin(args.n,BasinConfig(seed=args.seed,seconds=args.seconds,
+                                        hops=args.hops,maxiter=args.maxiter,
+                                        temperature=args.temperature))
+            write_submission({args.n:packing},args.output)
+            if args.report:
+                _report(args.report,result)
+            print(json.dumps({k:v for k,v in result.items() if k!="history"},indent=2))
+        elif args.command=="basin-benchmark":
+            from .basin_experiment import compare
+            print(json.dumps(compare(args.output,args.n,args.seeds,args.seconds,args.metric,args.resume),indent=2))
         elif args.command=="optimize":
             from .optimize import solve,SolverConfig
             packing,result=solve(args.n,SolverConfig(seed=args.seed,restarts=args.restarts,
