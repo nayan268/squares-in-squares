@@ -56,6 +56,16 @@ def main(argv=None):
     comparison.add_argument("--output",type=Path,required=True)
     comparison.add_argument("--metric",type=Path)
     comparison.add_argument("--resume",action="store_true")
+    structured=commands.add_parser("structured-benchmark",
+        help="compare research-inspired maximal-inflation templates and seeds")
+    structured.add_argument("--cases",type=int,nargs="+",default=[11,17,18,19,29])
+    structured.add_argument("--seeds",type=int,nargs="+",default=[0,1,2])
+    structured.add_argument("--seconds",type=float,default=30)
+    structured.add_argument("--maxiter",type=int,default=120)
+    structured.add_argument("--initial",type=Path,required=True)
+    structured.add_argument("--metric",type=Path)
+    structured.add_argument("--output",type=Path,required=True)
+    structured.add_argument("--resume",action="store_true")
     local=commands.add_parser("local-run",help="resumable local run over all 1000 puzzles")
     local.add_argument("--output",type=Path,required=True)
     local.add_argument("--preset",choices=["quick","overnight"],default="quick")
@@ -73,6 +83,11 @@ def main(argv=None):
             from .local_run import run_all
             run_all(args.output,args.preset,args.workers,args.resume,args.max_n,
                     args.saved,args.metric,args.small_seconds,args.large_seconds,args.seed)
+        elif args.command=="structured-benchmark":
+            from .structured_experiment import benchmark
+            result=benchmark(args.output,args.cases,args.seeds,args.seconds,args.initial,
+                             args.metric,args.maxiter,args.resume)
+            print(json.dumps(result["best"],indent=2))
         elif args.command=="baseline":
             if not 1<=args.max_n<=1000:
                 raise ValueError("max-n must be from 1 through 1000")

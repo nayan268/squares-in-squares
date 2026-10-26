@@ -125,6 +125,25 @@ python -m squares basin --n 11 --seed 20 --seconds 60 --output submissions/basin
 [Eleven-square basin-hopping results](docs/basin-results.md) record the
 matched-budget comparison and updated incumbent.
 
+## Structured maximal-inflation experiments
+
+The research-inspired solver works in a fixed unit container, inflates all
+squares until contacts form, and tries diagonal-band, rotated-block, staggered-row,
+tilted-strip, and incumbent-perturbation templates. Runs are local, resumable,
+and never call a network service or language model.
+
+~~~powershell
+$env:PYTHONPATH = "$PWD/src"
+python -m squares structured-benchmark `
+  --cases 11 17 18 19 29 --seeds 0 1 2 --seconds 30 `
+  --initial runs/local-all-001/submission.csv `
+  --metric runs/official-metric/squares-in-squares-v17.ipynb `
+  --output runs/structured-001
+~~~
+
+If interrupted, repeat the same command with `--resume`. Each case/seed is
+checkpointed separately, and `best-cases.csv` contains only the requested cases.
+
 ## Full local pass
 
 See [the all-puzzle local-run guide](docs/local-all-run.md) for the standalone
