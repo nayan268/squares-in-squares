@@ -80,7 +80,7 @@ def benchmark(output, cases, seeds, seconds, initial_path, metric_path=None,
                     seconds=seconds, maxiter=maxiter), initial=starts[n])
                 certification=_certify(metric, n, packing)
                 if not certification["feasible"]:
-                    packing=list(starts[n])
+                    packing=list(initial[n])
                     report["rejected_by_official_metric"]=certification
                     certification=_certify(metric, n, packing)
                 record={"n":n, "seed":seed, "L":validate(packing, n),
