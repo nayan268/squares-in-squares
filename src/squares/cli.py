@@ -66,6 +66,16 @@ def main(argv=None):
     structured.add_argument("--metric",type=Path)
     structured.add_argument("--output",type=Path,required=True)
     structured.add_argument("--resume",action="store_true")
+    family=commands.add_parser("family-benchmark",
+        help="optimize balanced row families for selected cases")
+    family.add_argument("--cases",type=int,nargs="+",default=[28,31,39,42,52,55,67,70,84,87])
+    family.add_argument("--seeds",type=int,nargs="+",default=[101,202,303])
+    family.add_argument("--seconds",type=float,default=20)
+    family.add_argument("--maxiter",type=int,default=180)
+    family.add_argument("--initial",type=Path,required=True)
+    family.add_argument("--metric",type=Path)
+    family.add_argument("--output",type=Path,required=True)
+    family.add_argument("--resume",action="store_true")
     local=commands.add_parser("local-run",help="resumable local run over all 1000 puzzles")
     local.add_argument("--output",type=Path,required=True)
     local.add_argument("--preset",choices=["quick","overnight"],default="quick")
@@ -83,6 +93,11 @@ def main(argv=None):
             from .local_run import run_all
             run_all(args.output,args.preset,args.workers,args.resume,args.max_n,
                     args.saved,args.metric,args.small_seconds,args.large_seconds,args.seed)
+        elif args.command=="family-benchmark":
+            from .family_experiment import benchmark
+            result=benchmark(args.output,args.cases,args.seeds,args.seconds,args.initial,
+                             args.metric,args.maxiter,args.resume)
+            print(json.dumps(result["best"],indent=2))
         elif args.command=="structured-benchmark":
             from .structured_experiment import benchmark
             result=benchmark(args.output,args.cases,args.seeds,args.seconds,args.initial,

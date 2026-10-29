@@ -65,6 +65,48 @@ class StructuredTests(unittest.TestCase):
             self.assertLess(side,validate(grid(n),n))
             self.assertLess(side,expected[n]+1e-5)
 
+    def test_balanced_row_families_preserve_count_and_nonoverlap(self):
+        from squares.family import balanced_row_counts, family_packing, family_side
+        from squares.geometry import validate
+        for n in (28, 31, 39, 84):
+            for variant in range(4):
+                counts=balanced_row_counts(n,variant,np.random.default_rng(7))
+                self.assertEqual(sum(counts),n)
+                parameters=np.zeros(len(counts)+1)
+                packing=family_packing(counts,parameters)
+                self.assertAlmostEqual(validate(packing,n),family_side(counts,parameters),places=6)
+
+    def test_family_deadline_retains_incumbent(self):
+        from squares.baseline import grid
+        from squares.family import FamilyConfig, solve_family
+        from squares.geometry import validate
+        packing,report=solve_family(28,FamilyConfig(seconds=1e-8,trials=2))
+        self.assertEqual(validate(packing,28),validate(grid(28),28))
+        self.assertEqual(report["status"],"time-budget")
+
+    def test_interlocked_family_pose_has_expected_shape(self):
+        from squares.family import balanced_row_counts, interlocked_pose
+        counts=balanced_row_counts(31)
+        parameters=np.zeros(len(counts)+4)
+        parameters[2:4]=1/len(counts)
+        pose=interlocked_pose(counts,parameters)
+        self.assertEqual(pose.shape,(31,3))
+        self.assertTrue(np.all(np.isfinite(pose)))
+
+    def test_research_border_family_preserves_square_offset(self):
+        from squares.geometry import validate
+        from squares.research_seeds import propagated_seed
+        expected=(28,39,52,67,84)
+        previous=4.885619
+        for n in expected:
+            packing=propagated_seed(n)
+            side=validate(packing,n)
+            self.assertLess(side,math.isqrt(n-1)+1)
+            self.assertGreater(side,previous)
+            previous=side
+        with self.assertRaises(KeyError):
+            propagated_seed(31)
+
 
 if __name__=="__main__":
     unittest.main()

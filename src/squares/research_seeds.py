@@ -5,7 +5,8 @@ Trump witness. The n=18 and n=19 centers are the project's CC BY 4.0
 known-best witness data, attributed to Joshua Levy, the Squares Project:
 https://github.com/jlevy/squares
 
-Original constructions: Trump (1979), Hamalainen (1980), Wainwright (1979).
+Original constructions include Trump (1979), Hamalainen (1980), Wainwright
+(1979), Bidwell (1998), and Schadt (2025).
 A tiny uniform expansion of the centers supplies numerical clearance.
 """
 from decimal import Decimal, getcontext
@@ -158,3 +159,18 @@ def published_seed(n):
 
 def available():
     return (11,17,18,19,29)
+
+
+def propagated_seed(n, clearance=1e-7):
+    """Best exact border-family descendant of a published small seed."""
+    from .warmstarts import add_border
+    candidates=[]
+    for base in available():
+        current=published_seed(base)
+        while len(current)<n:
+            current=add_border(current,clearance)
+        if len(current)==n:
+            candidates.append(current)
+    if not candidates:
+        raise KeyError(n)
+    return min(candidates,key=validate)

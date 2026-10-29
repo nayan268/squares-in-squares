@@ -144,6 +144,28 @@ python -m squares structured-benchmark `
 If interrupted, repeat the same command with `--resume`. Each case/seed is
 checkpointed separately, and `best-cases.csv` contains only the requested cases.
 
+## Balanced row-family pilot
+
+Cases just above a perfect square use two complementary mechanisms. Exact
+border propagation carries a verified packing from `k^2+r` to
+`(k+1)^2+r`; the low-dimensional refinement searches balanced row counts,
+global tilt, alternating row angles, spacing, and row offsets. It is a local
+CPU search and does not call a network service or a language model.
+
+~~~powershell
+$env:PYTHONPATH = "$PWD/src"
+python -m squares family-benchmark `
+  --cases 28 31 39 42 52 55 67 70 84 87 `
+  --seeds 101 202 303 --seconds 20 `
+  --initial runs/local-all-001/submission.csv `
+  --metric runs/official-metric/squares-in-squares-v17.ipynb `
+  --output runs/family-001
+~~~
+
+Repeat the exact command with `--resume` after an interruption. Outputs are
+checkpointed once per case and seed; the resulting CSV is intentionally only a
+selected-case artifact, not a complete Kaggle submission.
+
 ## Full local pass
 
 See [the all-puzzle local-run guide](docs/local-all-run.md) for the standalone
