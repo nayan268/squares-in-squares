@@ -76,6 +76,13 @@ def main(argv=None):
     family.add_argument("--metric",type=Path)
     family.add_argument("--output",type=Path,required=True)
     family.add_argument("--resume",action="store_true")
+    candidate=commands.add_parser("build-candidate",
+        help="merge and officially validate a complete submission")
+    candidate.add_argument("--initial",type=Path,required=True)
+    candidate.add_argument("--partials",type=Path,nargs="*",default=[])
+    candidate.add_argument("--metric",type=Path)
+    candidate.add_argument("--max-n",type=int,default=1000)
+    candidate.add_argument("--output",type=Path,required=True)
     local=commands.add_parser("local-run",help="resumable local run over all 1000 puzzles")
     local.add_argument("--output",type=Path,required=True)
     local.add_argument("--preset",choices=["quick","overnight"],default="quick")
@@ -93,6 +100,12 @@ def main(argv=None):
             from .local_run import run_all
             run_all(args.output,args.preset,args.workers,args.resume,args.max_n,
                     args.saved,args.metric,args.small_seconds,args.large_seconds,args.seed)
+        elif args.command=="build-candidate":
+            from .candidate import build_candidate
+            result=build_candidate(args.output,args.initial,args.partials,
+                                   args.metric,args.max_n)
+            print(json.dumps({k:v for k,v in result.items()
+                              if k not in ("changes","rejected_candidates")},indent=2))
         elif args.command=="family-benchmark":
             from .family_experiment import benchmark
             result=benchmark(args.output,args.cases,args.seeds,args.seconds,args.initial,

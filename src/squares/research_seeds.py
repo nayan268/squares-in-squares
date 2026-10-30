@@ -174,3 +174,19 @@ def propagated_seed(n, clearance=1e-7):
     if not candidates:
         raise KeyError(n)
     return min(candidates,key=validate)
+
+
+def propagated_seeds(max_n=1000, clearance=1e-7):
+    """Generate every distinct published-seed border descendant once."""
+    from .warmstarts import add_border
+    if not 1 <= max_n <= 1000:
+        raise ValueError("max_n must be from 1 through 1000")
+    result={}
+    for base in available():
+        current=published_seed(base)
+        while len(current)<=max_n:
+            n=len(current)
+            if n not in result or validate(current,n)<validate(result[n],n):
+                result[n]=current
+            current=add_border(current,clearance)
+    return result

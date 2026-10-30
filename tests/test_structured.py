@@ -107,6 +107,16 @@ class StructuredTests(unittest.TestCase):
         with self.assertRaises(KeyError):
             propagated_seed(31)
 
+    def test_all_research_border_families_are_generated_once(self):
+        from squares.geometry import validate
+        from squares.research_seeds import propagated_seeds
+        seeds=propagated_seeds(84)
+        for n in (17,18,19,26,27,28,29,39,40,52,67,84):
+            self.assertIn(n,seeds)
+            self.assertEqual(len(seeds[n]),n)
+            validate(seeds[n],n)
+        self.assertNotIn(31,seeds)
+
 
 if __name__=="__main__":
     unittest.main()

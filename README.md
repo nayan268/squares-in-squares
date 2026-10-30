@@ -166,6 +166,18 @@ Repeat the exact command with `--resume` after an interruption. Outputs are
 checkpointed once per case and seed; the resulting CSV is intentionally only a
 selected-case artifact, not a complete Kaggle submission.
 
+To merge the selected experiments and every better published-seed border
+descendant into a complete, officially checked candidate:
+
+~~~powershell
+$env:PYTHONPATH = "$PWD/src"
+python -m squares build-candidate `
+  --initial runs/local-all-001/submission.csv `
+  --partials runs/structured-002/best-cases.csv runs/family-001/best-cases.csv `
+  --metric runs/official-metric/squares-in-squares-v17.ipynb `
+  --output runs/candidate-001
+~~~
+
 ## Full local pass
 
 See [the all-puzzle local-run guide](docs/local-all-run.md) for the standalone
