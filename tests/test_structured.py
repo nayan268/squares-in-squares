@@ -1,4 +1,5 @@
 import importlib.util
+import json
 import math
 import unittest
 
@@ -83,6 +84,7 @@ class StructuredTests(unittest.TestCase):
         packing,report=solve_family(28,FamilyConfig(seconds=1e-8,trials=2))
         self.assertEqual(validate(packing,28),validate(grid(28),28))
         self.assertEqual(report["status"],"time-budget")
+        json.dumps(report,allow_nan=False)
 
     def test_interlocked_family_pose_has_expected_shape(self):
         from squares.family import balanced_row_counts, interlocked_pose

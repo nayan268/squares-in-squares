@@ -221,7 +221,8 @@ def solve_family(n, config=None, initial=None, callback=None):
             if candidate_side < best_side - 1e-10:
                 best, best_side = candidate, candidate_side
             row = {"trial": trial, "counts": list(counts),
-                   "candidate_L": candidate_side, "best_L": best_side,
+                   "candidate_L": candidate_side if candidate is not None else None,
+                   "best_L": best_side,
                    "seconds": time.perf_counter() - started,
                    "local_success": local_success,
                    "evaluations": evaluations}
