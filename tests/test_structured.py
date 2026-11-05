@@ -95,6 +95,29 @@ class StructuredTests(unittest.TestCase):
         self.assertEqual(pose.shape,(31,3))
         self.assertTrue(np.all(np.isfinite(pose)))
 
+    def test_defect_family_moves_squares_and_builds_finite_pose(self):
+        from squares.family import defect_pose, defect_row_counts
+        for n in (30, 42, 56):
+            counts=defect_row_counts(n,0,np.random.default_rng(7))
+            self.assertEqual(sum(counts),n)
+            self.assertGreater(max(counts),min(counts))
+            rows=len(counts)
+            parameters=np.zeros(3*rows+1)
+            parameters[1]=1/rows
+            parameters[2+rows:1+2*rows]=1/rows
+            pose=defect_pose(counts,parameters)
+            self.assertEqual(pose.shape,(n,3))
+            self.assertTrue(np.all(np.isfinite(pose)))
+
+    def test_defect_family_deadline_retains_incumbent(self):
+        from squares.baseline import grid
+        from squares.family import FamilyConfig, solve_defect_family
+        from squares.geometry import validate
+        packing,report=solve_defect_family(30,FamilyConfig(seconds=1e-8,trials=2))
+        self.assertEqual(validate(packing,30),validate(grid(30),30))
+        self.assertEqual(report["status"],"time-budget")
+        json.dumps(report,allow_nan=False)
+
     def test_research_border_family_preserves_square_offset(self):
         from squares.geometry import validate
         from squares.research_seeds import propagated_seed

@@ -76,6 +76,16 @@ def main(argv=None):
     family.add_argument("--metric",type=Path)
     family.add_argument("--output",type=Path,required=True)
     family.add_argument("--resume",action="store_true")
+    defect=commands.add_parser("defect-benchmark",
+        help="optimize mixed-row staggered-defect families for selected cases")
+    defect.add_argument("--cases",type=int,nargs="+",default=[30,42,56])
+    defect.add_argument("--seeds",type=int,nargs="+",default=[101,202,303])
+    defect.add_argument("--seconds",type=float,default=20)
+    defect.add_argument("--maxiter",type=int,default=180)
+    defect.add_argument("--initial",type=Path,required=True)
+    defect.add_argument("--metric",type=Path)
+    defect.add_argument("--output",type=Path,required=True)
+    defect.add_argument("--resume",action="store_true")
     candidate=commands.add_parser("build-candidate",
         help="merge and officially validate a complete submission")
     candidate.add_argument("--initial",type=Path,required=True)
@@ -106,6 +116,11 @@ def main(argv=None):
                                    args.metric,args.max_n)
             print(json.dumps({k:v for k,v in result.items()
                               if k not in ("changes","rejected_candidates")},indent=2))
+        elif args.command=="defect-benchmark":
+            from .defect_experiment import benchmark
+            result=benchmark(args.output,args.cases,args.seeds,args.seconds,args.initial,
+                             args.metric,args.maxiter,args.resume)
+            print(json.dumps(result["best"],indent=2))
         elif args.command=="family-benchmark":
             from .family_experiment import benchmark
             result=benchmark(args.output,args.cases,args.seeds,args.seconds,args.initial,
